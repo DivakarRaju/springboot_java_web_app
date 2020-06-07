@@ -1,16 +1,12 @@
 node ('slave-1') {
     stage('Build') {
-            git ([branch: 'master',
-                credentialsId: '7cffbc1b-acb4-4931-85f5-767fde7511d6',
-                url: 'https://github.com/DivakarRaju/springboot_java_web_app.git'])
+            git 'https://github.com/DivakarRaju/springboot_java_web_app.git'
             sh "mvn -Dmaven.test.skip=true package"
     }
 }
 node ('slave-2') {
     stage('Test') {
-            git ([branch: 'master',
-                credentialsId: '7cffbc1b-acb4-4931-85f5-767fde7511d6',
-                url: 'https://github.com/DivakarRaju/springboot_java_web_app.git'])
+            git 'https://github.com/DivakarRaju/springboot_java_web_app.git'
             sh "mvn test"
     }
 }
